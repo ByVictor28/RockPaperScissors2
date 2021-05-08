@@ -1,0 +1,93 @@
+@import "../../../indexStyles.scss";
+
+.Option{
+    position: absolute;
+    height: 13rem;
+    width: 13rem;
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+
+
+    @include flexCenter(row,center,center);
+
+    &::after{
+        content: "";
+        display: block;
+        height: 12.5rem;
+        width: 13rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+
+    }
+
+    .Circle{
+        z-index: 2;
+        background: $white_shadow;
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%; 
+        @include flexCenter(row,center,center);
+        position: relative;
+        &::after{
+            content: "";
+            display: block;
+            height: 9.6rem;
+            width: 9.9rem;
+            border-radius: 50%; 
+            background: white;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+    img{
+        z-index: 4;
+    }
+
+    &:hover{
+        transform: scale(1.5);
+    }
+}
+
+.Scissors{
+    background: $scissors_shadow;
+    &::after{
+        background: $scissors;
+    }   
+}
+.Paper{
+    background: $paper_shadow;
+    &::after{
+        background: $paper;
+    }   
+}
+.Rock{
+    background: $rock_shadow;
+    &::after{
+        background: $rock;
+    }   
+}
+
+.Winner{
+    // &::before{
+    //     content: "";
+    //     display: block;
+    //     background: red;
+    //     height: 16rem;
+    //     width: 16rem;
+    //     border-radius: 50%;
+    //     position: absolute;   
+    // }
+    
+    // &::after{
+    //     content: "";
+    //     display: block;
+    //     background: red;
+    //     height: 22rem;
+    //     width: 22rem;
+    //     border-radius: 50%;
+    //     position: absolute;
+    //     top: -5rem;
+    //     left: -5rem;   
+    // }
+}
