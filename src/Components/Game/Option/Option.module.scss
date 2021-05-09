@@ -7,7 +7,6 @@
     border-radius: 50%;
     transition: transform 0.5s ease;
 
-
     @include flexCenter(row,center,center);
 
     &::after{
@@ -28,7 +27,9 @@
         width: 10rem;
         border-radius: 50%; 
         @include flexCenter(row,center,center);
-        position: relative;
+        position: absolute;
+        top: 10rem;
+        left: 10rem;
         &::after{
             content: "";
             display: block;
@@ -40,12 +41,27 @@
             bottom: 0;
         }
     }
+
+    .Docoration{
+        background: white;
+        height: 30rem;
+        width: 30rem;
+        border-radius: 50%;
+        position: absolute;
+        background: radial-gradient(circle, rgba(255, 255, 255,0.1),rgba(255, 255, 255,0.3),rgba(255, 255, 255,0.6));  
+    }
+    .Winner{
+        background: radial-gradient(circle,rgba(0, 255, 13, 0.1),rgba(0, 255, 13, 0.3),rgba(0, 255, 13, 0.6));      
+    }
+    .Looser{
+        background: radial-gradient(circle,rgba(255, 41, 41, 0.1),rgba(255, 41, 41, 0.3),rgba(255, 41, 41, 0.6));      
+    }
     img{
         z-index: 4;
     }
 
     &:hover{
-        transform: scale(1.5);
+        transform: scale(1.2);
     }
 }
 

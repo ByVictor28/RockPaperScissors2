@@ -1,0 +1,15 @@
+@import "../../../indexStyles.scss";
+
+.Duel{
+    width: 50rem;
+    height: 20rem;
+    @include flexCenter(row,center,space-between);
+
+    div{
+        position: relative;
+    }
+}
+
+.Winner{
+    background: red;
+}
