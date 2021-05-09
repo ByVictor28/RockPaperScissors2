@@ -1,6 +1,6 @@
 import React from 'react'
 import Option from '../Option/Option'
-import classes from "./Board.module.scss"
+import classes from "./Normal.module.scss"
 
 const Game = (props)=>{ 
 return (

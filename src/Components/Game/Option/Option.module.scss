@@ -67,27 +67,15 @@
         background: $rock;
     }   
 }
-
-.Winner{
-    // &::before{
-    //     content: "";
-    //     display: block;
-    //     background: red;
-    //     height: 16rem;
-    //     width: 16rem;
-    //     border-radius: 50%;
-    //     position: absolute;   
-    // }
-    
-    // &::after{
-    //     content: "";
-    //     display: block;
-    //     background: red;
-    //     height: 22rem;
-    //     width: 22rem;
-    //     border-radius: 50%;
-    //     position: absolute;
-    //     top: -5rem;
-    //     left: -5rem;   
-    // }
+.Lizard{
+    background: $lizard_shadow;
+    &::after{
+        background: $lizard;
+    }   
+}
+.Spock{
+    background: $spock_shadow;
+    &::after{
+        background: $spock;
+    }   
 }

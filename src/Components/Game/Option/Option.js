@@ -8,7 +8,7 @@ const Option = ({option})=>{
 
     switch (option) {
         case "S":
-            type = `${classes.Scissors} ${classes.Option} ${classes.Winner}`
+            type = `${classes.Scissors} ${classes.Option}`
             src_image = "images/icon-scissors.svg"
             break;
         case "R":
@@ -18,6 +18,14 @@ const Option = ({option})=>{
         case "P":
             type = `${classes.Paper} ${classes.Option}`
             src_image = "images/icon-paper.svg"
+            break;
+        case "L":
+            type = `${classes.Lizard} ${classes.Option}`
+            src_image = "images/icon-lizard.svg"
+            break;
+        default:
+            type = `${classes.Spock} ${classes.Option}`
+            src_image = "images/icon-spock.svg"
             break;
     }
 
