@@ -1,5 +1,6 @@
 import './App.scss';
-import Game from './Components/Game/Board/Game';
+import Bonus from './Components/Game/Bonus/Bonus';
+import Board from './Components/Game/Normal/Normal';
 import Header from './Components/Header/Header';
 import Rules from './Components/Rules/Rules';
 
@@ -7,7 +8,8 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Game/>
+      {/* <Board/> */}
+      <Bonus/>
       <Rules/>
     </div>
   );
