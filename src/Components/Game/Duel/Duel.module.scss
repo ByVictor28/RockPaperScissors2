@@ -1,0 +1,53 @@
+@import "../../../indexStyles.scss";
+
+.Duel{
+    background: rebeccapurple;
+    padding: 4rem 0;
+    // width: 40rem;
+    width: 80%;
+    height: 60rem;
+    @include flexCenter(column,center,space-between);
+
+    .Message{
+        // background: red;
+        width: 20rem;
+        text-align: center;
+        font-weight: bold;
+        font-size: 4rem;
+        span{
+            color: whitesmoke;
+            display: block;
+        }
+        button{
+            border: none;
+            padding: 1rem 4rem;
+            background: whitesmoke;
+            border-radius: 1rem;
+            font-weight: bold;
+            font-size: 2rem;
+            color: $main;
+        }
+    }
+    div{
+        position: relative;
+        transform: none;
+        div{
+            &:nth-child(2){
+                    width: 20rem;
+                    height: 20rem;
+                    display: block;
+                    border-radius: 50%;
+                    position: absolute;
+            }
+        }
+    }
+}
+
+@include Laptop{
+    .Duel{
+        background: red;
+        flex-direction: row !important;
+        justify-content: space-around;
+        height: 20rem;
+    }
+}
