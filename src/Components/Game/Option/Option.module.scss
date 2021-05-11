@@ -6,9 +6,15 @@
     width: 13rem;
     border-radius: 50%;
     transition: transform 0.5s ease;
-
+    z-index: 10;
     @include flexCenter(row,center,center);
 
+    .Winner{
+        background: radial-gradient(circle, rgba(20,30,48,1) 0%, rgba(76,255,94,1) 100%);
+    }
+    .Looser{
+        background: radial-gradient(circle, rgba(20,30,48,1) 0%, rgba(255,76,76,1) 100%);
+    }
     &::after{
         content: "";
         display: block;
@@ -21,15 +27,13 @@
     }
 
     .Circle{
-        z-index: 2;
         background: $white_shadow;
         height: 10rem;
         width: 10rem;
         border-radius: 50%; 
         @include flexCenter(row,center,center);
-        position: absolute;
-        top: 10rem;
-        left: 10rem;
+        position: relative;
+        z-index: 11;
         &::after{
             content: "";
             display: block;
@@ -39,6 +43,7 @@
             background: white;
             position: absolute;
             bottom: 0;
+            z-index: 12;
         }
     }
 
@@ -57,7 +62,7 @@
         background: radial-gradient(circle,rgba(255, 41, 41, 0.1),rgba(255, 41, 41, 0.3),rgba(255, 41, 41, 0.6));      
     }
     img{
-        z-index: 4;
+        z-index: 13;
     }
 
     &:hover{

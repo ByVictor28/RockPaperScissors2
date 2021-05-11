@@ -2,11 +2,16 @@ import React from 'react'
 import Option from '../Option/Option'
 import classes from "./Duel.module.scss"
 
-const Duel = ()=>{ 
+const Duel = (props)=>{ 
 return (
     <div className={classes.Duel}>
-        <Option option="S" />
-        <Option option="L" />
+            <Option Winner/>
+            <div className={classes.Message}>
+                <span>YOU WIN</span>    
+                <button>Play Again</button>
+            </div>
+            <Option/>
+        
     </div>
 ) 
 }

@@ -11,7 +11,7 @@ function App() {
       <Header/>
       {/* <Board/> */}
       {/* <Bonus/> */}
-      <Duel/>
+      <Duel></Duel>
       <Rules/>
     </div>
   );
