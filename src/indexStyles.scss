@@ -52,7 +52,7 @@ body {
 
 @mixin flexCenter($direction, $align, $justify) {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: $direction !important;
   align-items: $align;
   justify-content: $justify;

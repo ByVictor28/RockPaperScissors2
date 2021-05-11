@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from "./Option.module.scss"
 
-const Option = ({option})=>{ 
+const Option = ({option,Winner})=>{ 
 
     let type;
     let src_image;
@@ -34,7 +34,7 @@ return (
         <div className={`${classes.Circle}`}>
             <img src={src_image} alt="Icon"/>
         </div>
-        <div className={classes.Docoration}>
+        <div className={`${Winner&&classes.Winner}`}>
             
         </div>
     </div>
