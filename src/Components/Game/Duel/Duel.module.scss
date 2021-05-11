@@ -1,7 +1,7 @@
 @import "../../../indexStyles.scss";
 
 .Duel{
-    background: rebeccapurple;
+    // background: rebeccapurple;
     padding: 4rem 0;
     // width: 40rem;
     width: 80%;
@@ -45,7 +45,7 @@
 
 @include Laptop{
     .Duel{
-        background: red;
+        // background: red;
         flex-direction: row !important;
         justify-content: space-around;
         height: 20rem;
