@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from "./Option.module.scss"
 
-const Option = ({option,Winner})=>{ 
+const Option = ({option,Winner,click})=>{ 
 
     let type;
     let src_image;
@@ -30,7 +30,7 @@ const Option = ({option,Winner})=>{
     }
 
 return (
-    <div className={type}>
+    <div className={type} onClick={click}>
         <div className={`${classes.Circle}`}>
             <img src={src_image} alt="Icon"/>
         </div>
