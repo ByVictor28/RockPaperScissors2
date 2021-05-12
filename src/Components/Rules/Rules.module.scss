@@ -1,0 +1,10 @@
+@import "../../indexStyles.scss";
+
+.Rules{
+    border: 0.2rem solid $border_box;
+    border-radius: 1rem;
+    padding: 1rem 4.5rem;
+    color: $border_box;
+    font-weight: bold;
+    font-size: 2rem;
+}
