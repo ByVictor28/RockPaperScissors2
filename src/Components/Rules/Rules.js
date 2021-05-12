@@ -1,10 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Modal from '../UI/Modal'
 import classes from "./Rules.module.scss"
 
-const Rules = (props)=>{ 
+const Rules = ()=>{ 
+    const [showModal, setShowModal] = useState(false)
+    
+    const toogleShowModal = () =>{
+        setShowModal(!showModal)
+    }
 return (
-    <div className={classes.Rules}>
-        Rules         
+    <div className={classes.Rules} onClick={toogleShowModal}>
+        Rules
+        <Modal showModal={showModal} click={toogleShowModal} type="B"/>
     </div>
 ) 
 }

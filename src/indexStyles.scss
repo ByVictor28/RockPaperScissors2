@@ -58,6 +58,10 @@ body {
   justify-content: $justify;
 }
 
+h1,h2,h3{
+  margin: 0;
+}
+
 .shadow{
   box-shadow: rgba(0, 0, 0, 01) 0px 3px 8px;
 }
