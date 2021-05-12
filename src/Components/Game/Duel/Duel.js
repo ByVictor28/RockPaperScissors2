@@ -39,7 +39,7 @@ const Duel = ({optionSelected,changeSelection,changeScore,type})=>{
     useEffect(() => {
         let min = 0
         let max = type?2:4
-
+        // console.log(max)
         
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -80,7 +80,7 @@ const Duel = ({optionSelected,changeSelection,changeScore,type})=>{
                 break;
         }
 
-    }, [optionSelected,type,changeScore])
+    }, [optionSelected,type])
     
 return (
     <div className={classes.Duel}>

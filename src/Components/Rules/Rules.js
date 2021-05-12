@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Modal from '../UI/Modal'
+import Modal from '../UI/Modal/Modal'
 import classes from "./Rules.module.scss"
 
 const Rules = ()=>{ 

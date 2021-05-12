@@ -9,6 +9,7 @@ import Rules from './Components/Rules/Rules';
 function App() {
 
   const [optionSelected, setOptionSelected] = useState("")
+  const [normalGame, setNormalGame] = useState(true)
   const [score, setScore] = useState(0)
 
   const changeSelectedOption = (option) =>{
@@ -17,23 +18,28 @@ function App() {
   const changeScore = (point) =>{
     setScore(score+point);
   }
+  const changeNormalGame = () =>{
+    setNormalGame(!normalGame)
+  }
   
   return (
     <div className="App">
-      <Header score={score}/>
+      <Header score={score} click={changeNormalGame}/>
       {
         !optionSelected?
-          <Board changeSelection={changeSelectedOption}/>
+          normalGame?
+            <Board changeSelection={changeSelectedOption}/>
+          :
+            <Bonus changeSelection={changeSelectedOption}/>
         :
           <Duel 
             optionSelected={optionSelected} 
             changeSelection={changeSelectedOption} 
-            type //True for Normal, false for Bonus
+            type={normalGame} //True for Normal, false for Bonus
             changeScore={changeScore}
           ></Duel>
       }
 
-      {/* <Bonus/> */}
       <Rules/>
     </div>
   );
