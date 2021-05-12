@@ -1,18 +1,40 @@
+@import "../../../indexStyles.scss";
 .Game{
     position: relative;
-
+    margin: 7rem 0;
+    width: 22rem;
+    // background: rebeccapurple;
+    .Image{
+        width: 100%;
+        margin: 0 auto;
+    }
     div{
         &:nth-child(4){
             top: -4rem;
-            right: -4rem;
+            right: -3rem;
         }
         &:nth-child(2){
             top: -4rem;
-            left: -4rem;
+            left: -3rem;
         }
         &:nth-child(3){
-            bottom: -5rem;
-            left: 9rem;
+            bottom: -3rem;
+            left: 6.5rem;
+        }
+    }
+}
+@include Laptop{
+    
+}
+@include Smartphone{
+    .Game{
+        width: 30rem;
+        // background: red !important;
+        div{
+            &:nth-child(3){
+                bottom: -2rem;
+                left: 10.5rem;
+            }
         }
     }
 }

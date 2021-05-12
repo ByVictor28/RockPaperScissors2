@@ -2,8 +2,8 @@
 
 .Option{
     position: absolute;
-    height: 13rem;
-    width: 13rem;
+    height: 9rem;
+    width: 9rem;
     border-radius: 50%;
     transition: transform 0.5s ease;
     z-index: 10;
@@ -18,8 +18,8 @@
     &::after{
         content: "";
         display: block;
-        height: 12.5rem;
-        width: 13rem;
+        height: 8.7rem;
+        width: 9rem;
         border-radius: 50%;
         position: absolute;
         top: 0;
@@ -28,8 +28,8 @@
 
     .Circle{
         background: $white_shadow;
-        height: 10rem;
-        width: 10rem;
+        height: 6.9rem;
+        width: 6.9rem;
         border-radius: 50%; 
         @include flexCenter(row,center,center);
         position: relative;
@@ -37,13 +37,16 @@
         &::after{
             content: "";
             display: block;
-            height: 9.6rem;
-            width: 9.9rem;
+            height: 6.5rem;
+            width:6.9rem;
             border-radius: 50%; 
             background: white;
             position: absolute;
             bottom: 0;
             z-index: 12;
+        }
+        img{
+            width: 3rem;
         }
     }
 
@@ -100,3 +103,131 @@
         background: $spock;
     }   
 }
+@include Laptop{
+    .Option{
+        // background: red;
+        height: 13rem;
+        width: 13rem;
+        &::after{
+            
+            height: 12.5rem;
+            width: 13rem;
+
+        }
+
+        .Circle{
+            
+            height: 10rem;
+            width: 10rem;
+            &::after{
+                height: 9.6rem;
+                width: 9.9rem;
+            }
+            img{
+                width: 4.5rem;
+            }
+        }
+    }
+}
+// @import "../../../indexStyles.scss";
+
+// .Option{
+//     position: absolute;
+//     height: 13rem;
+//     width: 13rem;
+//     border-radius: 50%;
+//     transition: transform 0.5s ease;
+//     z-index: 10;
+//     @include flexCenter(row,center,center);
+
+//     .Winner{
+//         background: radial-gradient(circle, rgba(20,30,48,1) 0%, rgba(76,255,94,1) 100%);
+//     }
+//     .Looser{
+//         background: radial-gradient(circle, rgba(20,30,48,1) 0%, rgba(255,76,76,1) 100%);
+//     }
+//     &::after{
+//         content: "";
+//         display: block;
+//         height: 12.5rem;
+//         width: 13rem;
+//         border-radius: 50%;
+//         position: absolute;
+//         top: 0;
+
+//     }
+
+//     .Circle{
+//         background: $white_shadow;
+//         height: 10rem;
+//         width: 10rem;
+//         border-radius: 50%; 
+//         @include flexCenter(row,center,center);
+//         position: relative;
+//         z-index: 11;
+//         &::after{
+//             content: "";
+//             display: block;
+//             height: 9.6rem;
+//             width: 9.9rem;
+//             border-radius: 50%; 
+//             background: white;
+//             position: absolute;
+//             bottom: 0;
+//             z-index: 12;
+//         }
+//     }
+
+//     .Docoration{
+//         background: white;
+//         height: 30rem;
+//         width: 30rem;
+//         border-radius: 50%;
+//         position: absolute;
+//         background: radial-gradient(circle, rgba(255, 255, 255,0.1),rgba(255, 255, 255,0.3),rgba(255, 255, 255,0.6));  
+//     }
+//     .Winner{
+//         background: radial-gradient(circle,rgba(0, 255, 13, 0.1),rgba(0, 255, 13, 0.3),rgba(0, 255, 13, 0.6));      
+//     }
+//     .Looser{
+//         background: radial-gradient(circle,rgba(255, 41, 41, 0.1),rgba(255, 41, 41, 0.3),rgba(255, 41, 41, 0.6));      
+//     }
+//     img{
+//         z-index: 13;
+//     }
+
+//     &:hover{
+//         transform: scale(1.2);
+//     }
+// }
+
+// .Scissors{
+//     background: $scissors_shadow;
+//     &::after{
+//         background: $scissors;
+//     }   
+// }
+// .Paper{
+//     background: $paper_shadow;
+//     &::after{
+//         background: $paper;
+//     }   
+// }
+// .Rock{
+//     background: $rock_shadow;
+//     &::after{
+//         background: $rock;
+//     }   
+// }
+// .Lizard{
+//     background: $lizard_shadow;
+//     &::after{
+//         background: $lizard;
+//     }   
+// }
+// .Spock{
+//     background: $spock_shadow;
+//     &::after{
+//         background: $spock;
+//     }   
+// }
