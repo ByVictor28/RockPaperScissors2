@@ -40,7 +40,7 @@ function App() {
           ></Duel>
       }
 
-      <Rules/>
+      <Rules type={normalGame}/>
     </div>
   );
 }
