@@ -1,27 +1,62 @@
+@import "../../../indexStyles.scss";
 .Bonus{
     position: relative;
-
+    margin: 7rem 0;
+    width: 22rem;
+    .Image{
+        width: 100%;
+        margin: 0 auto;
+    }
     div{
         &:nth-child(2){
-            top: 7rem;
+            top: 4rem;
             right: -4rem;
         }
         &:nth-child(3){
-            top: 7rem;
+            top: 4rem;
             left: -4rem;
         }
         &:nth-child(4){
-            bottom: -5rem;
+            bottom: -3rem;
             left: 0rem;
         }
         &:nth-child(5){
-            bottom: -5rem;
+            bottom: -3rem;
             right: 0rem;
         }
         &:nth-child(6){
-            top: -5rem;
-            left: 10rem;
+            top: -3rem;
+            left: 6.5rem;
         }
     }
 }
+@include Laptop{
+    .Bonus{
+        width: 30rem;
+        div{
+            &:nth-child(2){
+                top: 7rem;
+                right: -4rem;
+            }
+            &:nth-child(3){
+                top: 7rem;
+                left: -4rem;
+            }
+            &:nth-child(4){
+                bottom: -5rem;
+                left: 0rem;
+            }
+            &:nth-child(5){
+                bottom: -5rem;
+                right: 0rem;
+            }
+            &:nth-child(6){
+                top: -5rem;
+                left: 10rem;
+            }
+        }
+    }
+}
+
+
 

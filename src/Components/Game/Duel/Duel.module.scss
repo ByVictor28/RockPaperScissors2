@@ -6,7 +6,7 @@
     // width: 40rem;
     width: 80%;
     height: 60rem;
-    @include flexCenter(column,center,space-between);
+    @include flexCenter(column,center,space-around);
 
     .Message{
         // background: red;

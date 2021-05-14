@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
-import Modal from '../UI/Modal'
+import Modal from '../UI/Modal/Modal'
 import classes from "./Rules.module.scss"
 
-const Rules = ()=>{ 
+const Rules = ({normalGame})=>{ 
     const [showModal, setShowModal] = useState(false)
     
     const toogleShowModal = () =>{
@@ -11,7 +11,7 @@ const Rules = ()=>{
 return (
     <div className={classes.Rules} onClick={toogleShowModal}>
         Rules
-        <Modal showModal={showModal} click={toogleShowModal} type="B"/>
+        <Modal showModal={showModal} click={toogleShowModal} normalGame={normalGame}/>
     </div>
 ) 
 }
