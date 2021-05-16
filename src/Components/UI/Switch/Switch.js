@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from "./Switch.module.scss"
+import "./Switch.module.scss"
 
 const Switch = ({click})=>{ 
     return (
