@@ -6,9 +6,12 @@ import Board from './Components/Game/Normal/Normal';
 import Header from './Components/Header/Header';
 import Menu from "./Components/Menu/Menu";
 import Rules from './Components/Rules/Rules';
+import useSocket from "./socket";
 
 function App() {
 
+
+  const {moves, sendMoveToServer} = useSocket();
   const [infoPlayer, setInfoPlayer] = useState({name:"",room:""})
   const [optionSelected, setOptionSelected] = useState("")
   const [normalGame, setNormalGame] = useState(true)
@@ -21,14 +24,16 @@ function App() {
 
   const changeSelectedOption = (option) =>{
     setOptionSelected(option)
+    sendMoveToServer()
   }
+  
   const changeScore = (point) =>{
     setScore(score+point);
   }
   const changeNormalGame = () =>{
     setNormalGame(!normalGame)
   }
-  
+ 
   return (
     <div className="App">
       <Menu getDataUser={getDataUser}/>
@@ -43,12 +48,12 @@ function App() {
           <Duel 
             optionSelected={optionSelected} 
             changeSelection={changeSelectedOption} 
-            type={normalGame} //True for Normal, false for Bonus
+            normalGame={normalGame} //True for Normal, false for Bonus
             changeScore={changeScore}
           ></Duel>
       }
 
-      <Rules type={normalGame}/>
+      <Rules normalGame={normalGame}/>
     </div>
   );
 }
