@@ -4,7 +4,6 @@
     border: 0.3rem solid $border_box;
     border-radius: 1rem;
     padding: 1rem;
-    background: rebeccapurple;
 
     @include flexCenter(row,center,space-between);
 
