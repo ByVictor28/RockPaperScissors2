@@ -1,7 +1,8 @@
 import {useState} from "react"
 import './App.scss';
 import Bonus from './Components/Game/Bonus/Bonus';
-import Duel from './Components/Game/Duel/Duel';
+// import Duel from './Components/Game/Duel/Duel';
+import DuelOnline from './Components/Game/DuelOnline/DuelOnline';
 import Board from './Components/Game/Normal/Normal';
 import Header from './Components/Header/Header';
 import Menu from "./Components/Menu/Menu";
@@ -11,20 +12,21 @@ import useSocket from "./socket";
 function App() {
 
 
-  const {moves, sendMoveToServer} = useSocket();
+  const {moves, sendMoveToServer, joinRoom, cleanRoom} = useSocket();
   const [infoPlayer, setInfoPlayer] = useState({name:"",room:""})
-  const [optionSelected, setOptionSelected] = useState("")
+  const [canSelectOption, setCanSelectOption] = useState(true)
+
   const [normalGame, setNormalGame] = useState(true)
   const [score, setScore] = useState(0)
 
   const getDataUser = (infoPlayer) => {
     setInfoPlayer(infoPlayer)
-    console.log(infoPlayer)
+    joinRoom(infoPlayer)
   }
 
   const changeSelectedOption = (option) =>{
-    setOptionSelected(option)
-    sendMoveToServer()
+    sendMoveToServer({...infoPlayer,option:option})
+    setCanSelectOption(false)
   }
   
   const changeScore = (point) =>{
@@ -33,27 +35,35 @@ function App() {
   const changeNormalGame = () =>{
     setNormalGame(!normalGame)
   }
+  const cleanRoomHandler = () =>{
+    console.log("CLEANING")
+    cleanRoom("1")
+  }
  
   return (
     <div className="App">
       <Menu getDataUser={getDataUser}/>
-      <Header score={score} click={changeNormalGame}/>
       {
-        !optionSelected?
-          normalGame?
-            <Board changeSelection={changeSelectedOption}/>
-          :
-            <Bonus changeSelection={changeSelectedOption}/>
-        :
-          <Duel 
-            optionSelected={optionSelected} 
-            changeSelection={changeSelectedOption} 
-            normalGame={normalGame} //True for Normal, false for Bonus
-            changeScore={changeScore}
-          ></Duel>
+        infoPlayer.name!== "" &&
+        <>
+          <Header score={score} click={changeNormalGame}/>
+          {
+            moves.moves !== 2 ?
+              normalGame?
+                <Board changeSelection={changeSelectedOption} canSelect={canSelectOption}/>
+              :
+                <Bonus changeSelection={changeSelectedOption}/>
+            :
+              <DuelOnline 
+                playerOneOption={moves.player1}
+                palyerTwoOption={moves.player2}
+                winner={moves.winner}
+                cleanRoom={cleanRoomHandler}
+              ></DuelOnline>
+          }
+          <Rules normalGame={normalGame}/>
+        </>
       }
-
-      <Rules normalGame={normalGame}/>
     </div>
   );
 }

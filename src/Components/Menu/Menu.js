@@ -4,18 +4,37 @@ import classes from "./Menu.module.scss"
 const Menu = ({getDataUser})=>{ 
     const [name, setName] = useState("");
     const [room, setRoom] = useState("");
+    const [canChange, setCanChange] = useState(true);
 
+    const aceptData = () =>{
+        getDataUser({name,room})
+        // console.log("object")
+        setCanChange(false);
+    }
+    const tryAgain = () =>{
+        getDataUser({name:"",room:""})
+        // console.log("object")
+        setCanChange(true);
+    }
 return (
     <div className={classes.Menu}>
+        
         <div>    
-            <input type="text" placeholder="Name" onChange={(e) => {setName(e.target.value)}}/>
+            <input type="text" placeholder="Name" onChange={(e) => {setName(e.target.value)}} disabled={!canChange} value={name}/>
         </div>
         <div>    
-            <input type="text" placeholder="Room" onChange={(e) => {setRoom(e.target.value)}}/>
+            <input type="text" placeholder="Room" onChange={(e) => {setRoom(e.target.value)}} disabled={!canChange} value={room}/>
         </div>
-        <div>
-            <input type="submit" value="Accept" onClick={() => getDataUser({name,room})}/>
-        </div>
+        {
+            canChange?
+            <div>
+                <input type="submit" value="Accept" onClick={aceptData}/>
+            </div>
+            :
+            <div>
+                <input type="submit" value="Try again" onClick={tryAgain}/>
+            </div>
+        }
     </div>
 ) 
 }
