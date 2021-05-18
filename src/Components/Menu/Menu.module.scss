@@ -6,7 +6,7 @@
     margin: 0 0 1rem 0;
     color: $card_back;
     font-weight: bold;
-    @include flexCenter(row,center,space-between);
+    @include flexCenter(column,center,center);
 
     input{
         border-radius: 0.5rem;
@@ -14,11 +14,21 @@
         background: transparent;
         color: white;
         border: 0.2rem solid $border_box;
+        margin: 1rem 0;
+        width: 15rem;
     }
 
     input[type="submit"]{
         background: $card_back;
         color: $main;
         font-weight: bold;
+        width: 100%;
+    }
+}
+
+@include Smartphone{
+    .Menu{
+        flex-direction: row !important;
+        justify-content: space-between;
     }
 }
