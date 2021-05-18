@@ -1,17 +1,10 @@
 import React from 'react'
 import classes from "./Modal.module.scss"
 
-const Modal = ({normalGame,showModal,click})=>{ 
-    let srcImageRules = normalGame?"images/image-rules.svg":"images/image-rules-bonus.svg"
+const Modal = ({showModal,children,trasitionD})=>{ 
 return (
-    <div className={`${classes.Modal} ${showModal&&classes.Activo}`}>
-        <div className={classes.Container}>
-            <div className={classes.Header}>
-                <h2>RULES</h2>
-                <button onClick={click}>X</button>
-            </div>
-            <img src={srcImageRules} alt="Rules" />
-        </div>
+    <div className={`${classes.Modal} ${showModal&&classes.Activo}`} style={{transition:trasitionD?"top 1s ease":""}}>
+        {children}
     </div>
 ) 
 }

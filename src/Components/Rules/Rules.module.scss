@@ -8,3 +8,23 @@
     font-weight: bold;
     font-size: 2rem;
 }
+.Container{
+    background: white;        
+    border-radius: 1rem;
+    padding: 4rem;
+    
+    .Header{
+        // background-color: rebeccapurple;
+        margin-bottom: 2rem;
+        color: $main;
+        @include flexCenter(row,center,space-between);
+        button{
+            border: none;
+            background: white;
+            font-size: 3rem;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -7,6 +7,8 @@ import Board from './Components/Game/Normal/Normal';
 import Header from './Components/Header/Header';
 import Menu from "./Components/Menu/Menu";
 import Rules from './Components/Rules/Rules';
+import Modal from "./Components/UI/Modal/Modal";
+import Spinner from "./Components/UI/Spinner/Spinner";
 import useSocket from "./socket";
 
 function App() {
@@ -37,11 +39,13 @@ function App() {
   }
   const cleanRoomHandler = () =>{
     console.log("CLEANING")
-    cleanRoom("1")
+    cleanRoom(moves.room)
+    setCanSelectOption(true)
   }
  
   return (
     <div className="App">
+      {console.log(moves)}
       <Menu getDataUser={getDataUser}/>
       {
         infoPlayer.name!== "" &&
@@ -64,6 +68,12 @@ function App() {
           <Rules normalGame={normalGame}/>
         </>
       }
+      <Modal showModal={(moves.player1.name === infoPlayer.name && moves.moves===1) || (moves.player2.name === infoPlayer.name && moves.moves===1)}>
+        <div className="ModalContent">
+          <h2>Waiting rival's move</h2>
+          <Spinner/>
+        </div>
+      </Modal>
     </div>
   );
 }

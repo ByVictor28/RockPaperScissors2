@@ -8,3 +8,10 @@
   @include flexCenter(column,center,space-between);
   padding: 5rem 0;
 }
+.ModalContent{
+  color: white;
+  h2{
+    margin: 2rem;
+  }
+  @include flexCenter(column,center,center)
+}

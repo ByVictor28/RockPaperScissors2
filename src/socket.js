@@ -5,7 +5,7 @@ const SEND_MOVE_EVENT = "newMove";
 const JOIN_ROOM_EVENT = "joinRoom";
 const CLEAN_ROOM_EVENT = "cleanRoom";
 const useSocket = () =>{
-    const [moves, setMoves] = useState({moves:0});
+    const [moves, setMoves] = useState({moves:0,player1:{name:null,option:""},player2:{name:null,option:""}});
     const socketRef = useRef();
 
     useEffect(() => {
@@ -25,9 +25,8 @@ const useSocket = () =>{
         socketRef.current.on(CLEAN_ROOM_EVENT,(data)=>{
             // const newMove = {name:data.name,room:data.room,option:data.option,moves:data.moves}
             // setMoves(data.roomDetails)
-            console.log(data)
+            console.log("CLEANING ROOM: ",data.newRoomClean.room)
             setMoves(data.newRoomClean)
-
         })
 
         return () => {
