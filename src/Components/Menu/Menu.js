@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import classes from "./Menu.module.scss"
 
-const Menu = ({getDataUser})=>{ 
+const Menu = ({getDataUser,leaveGroupHandler})=>{ 
     const [name, setName] = useState("1");
     const [room, setRoom] = useState("1");
     const [canChange, setCanChange] = useState(true);
@@ -12,7 +12,7 @@ const Menu = ({getDataUser})=>{
         setCanChange(false);
     }
     const tryAgain = () =>{
-        getDataUser({name:"",room:""})
+        leaveGroupHandler({name,room})
         // console.log("object")
         setCanChange(true);
     }
