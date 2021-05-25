@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import classes from "./Menu.module.scss"
 
 const Menu = ({getDataUser})=>{ 
-    const [name, setName] = useState("");
-    const [room, setRoom] = useState("");
+    const [name, setName] = useState("1");
+    const [room, setRoom] = useState("1");
     const [canChange, setCanChange] = useState(true);
 
     const aceptData = () =>{

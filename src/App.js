@@ -38,19 +38,18 @@ function App() {
     setNormalGame(!normalGame)
   }
   const cleanRoomHandler = () =>{
-    console.log("CLEANING")
     cleanRoom(moves.room)
     setCanSelectOption(true)
   }
  
   return (
     <div className="App">
-      {console.log(moves)}
       <Menu getDataUser={getDataUser}/>
       {
+        // SHOW BOARD WHEN YOU HAVE A NAME 
         infoPlayer.name!== "" &&
         <>
-          <Header score={score} click={changeNormalGame}/>
+          <Header score={infoPlayer.name === moves.players[0].name?moves.players[0].score:moves.players[1].score} click={changeNormalGame}/>
           {
             moves.moves !== 2 ?
               normalGame?
@@ -59,8 +58,8 @@ function App() {
                 <Bonus changeSelection={changeSelectedOption}/>
             :
               <DuelOnline 
-                playerOneOption={moves.player1}
-                palyerTwoOption={moves.player2}
+                playerOneOption={moves.players[0]}
+                palyerTwoOption={moves.players[1]}
                 winner={moves.winner}
                 cleanRoom={cleanRoomHandler}
               ></DuelOnline>
@@ -68,7 +67,8 @@ function App() {
           <Rules normalGame={normalGame}/>
         </>
       }
-      <Modal showModal={(moves.player1.name === infoPlayer.name && moves.moves===1) || (moves.player2.name === infoPlayer.name && moves.moves===1)}>
+      <Modal showModal={(infoPlayer.name === moves.players[0].name && moves.waiting===1) || (infoPlayer.name === moves.players[1].name && moves.waiting===2)}>
+        {console.log(infoPlayer.name, moves.players[0].name, moves.waiting)}
         <div className="ModalContent">
           <h2>Waiting rival's move</h2>
           <Spinner/>
