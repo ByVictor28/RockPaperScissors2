@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import './App.scss';
 import Bonus from './Components/Game/Bonus/Bonus';
 // import Duel from './Components/Game/Duel/Duel';
@@ -14,12 +14,19 @@ import useSocket from "./socket";
 function App() {
 
 
-  const {moves, sendMoveToServer, joinRoom, cleanRoom} = useSocket();
+  const {moves, sendMoveToServer, joinRoom, cleanRoom, leaveGroup, accessDenied} = useSocket();
   const [infoPlayer, setInfoPlayer] = useState({name:"",room:""})
-  const [canSelectOption, setCanSelectOption] = useState(true)
+  
+  useEffect(() => {
+    
+    // console.log("[[USE EFFECT]]")
+    if(accessDenied){
+      window.alert("The room is full")
+    }
+  }, [accessDenied])
 
   const [normalGame, setNormalGame] = useState(true)
-  const [score, setScore] = useState(0)
+  // const [score, setScore] = useState(0)
 
   const getDataUser = (infoPlayer) => {
     setInfoPlayer(infoPlayer)
@@ -28,39 +35,40 @@ function App() {
 
   const changeSelectedOption = (option) =>{
     sendMoveToServer({...infoPlayer,option:option})
-    setCanSelectOption(false)
   }
   
-  const changeScore = (point) =>{
-    setScore(score+point);
-  }
+  // const changeScore = (point) =>{
+  //   setScore(score+point);
+  // }
   const changeNormalGame = () =>{
     setNormalGame(!normalGame)
   }
   const cleanRoomHandler = () =>{
-    console.log("CLEANING")
     cleanRoom(moves.room)
-    setCanSelectOption(true)
+  }
+  const leaveGroupHandler = ({name,room}) =>{
+    // console.log("leaveGroup FUNCTION",name,room)
+    leaveGroup(name,room)
   }
  
   return (
     <div className="App">
-      {console.log(moves)}
-      <Menu getDataUser={getDataUser}/>
+      <Menu getDataUser={getDataUser} leaveGroupHandler={leaveGroupHandler}/>
       {
+        // SHOW BOARD WHEN YOU HAVE A NAME 
         infoPlayer.name!== "" &&
         <>
-          <Header score={score} click={changeNormalGame}/>
+          <Header score={infoPlayer.name === moves.players[0].name?moves.players[0].score:moves.players[1].score} click={changeNormalGame}/>
           {
             moves.moves !== 2 ?
               normalGame?
-                <Board changeSelection={changeSelectedOption} canSelect={canSelectOption}/>
+                <Board changeSelection={changeSelectedOption}/>
               :
                 <Bonus changeSelection={changeSelectedOption}/>
             :
               <DuelOnline 
-                playerOneOption={moves.player1}
-                palyerTwoOption={moves.player2}
+                playerOneOption={moves.players[0]}
+                palyerTwoOption={moves.players[1]}
                 winner={moves.winner}
                 cleanRoom={cleanRoomHandler}
               ></DuelOnline>
@@ -68,7 +76,11 @@ function App() {
           <Rules normalGame={normalGame}/>
         </>
       }
-      <Modal showModal={(moves.player1.name === infoPlayer.name && moves.moves===1) || (moves.player2.name === infoPlayer.name && moves.moves===1)}>
+      <Modal showModal={
+        ((infoPlayer.name === moves.players[0].name && moves.waiting===1) || (infoPlayer.name === moves.players[1].name && moves.waiting===2)) ||
+        ((infoPlayer.name === moves.players[0].name && moves.players[1].name === "") || (infoPlayer.name === moves.players[1].name && moves.players[0].name === ""))
+        
+        }>
         <div className="ModalContent">
           <h2>Waiting rival's move</h2>
           <Spinner/>
