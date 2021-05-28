@@ -21,7 +21,7 @@ const useSocket = () =>{
     const socketRef = useRef();
 
     useEffect(() => {
-        socketRef.current = socketIOClient("http://localhost:3000/");
+        socketRef.current = socketIOClient("https://rockpaperscissorsjs.herokuapp.com/");
         
         socketRef.current.on(JOIN_ROOM_EVENT,(data)=>{
             // console.log(data)
