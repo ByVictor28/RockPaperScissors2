@@ -13,6 +13,9 @@ const Menu = ({getDataUser,leaveGroupHandler})=>{
     }
     const tryAgain = () =>{
         leaveGroupHandler({name,room})
+        setName("")
+        setRoom("")
+        getDataUser({name:"",room:""})
         // console.log("object")
         setCanChange(true);
     }

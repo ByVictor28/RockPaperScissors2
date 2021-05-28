@@ -30,7 +30,11 @@ function App() {
 
   const getDataUser = (infoPlayer) => {
     setInfoPlayer(infoPlayer)
-    joinRoom(infoPlayer)
+    if(infoPlayer.name!=="" && infoPlayer.room!==""){  
+      joinRoom(infoPlayer)
+    }else{
+      window.alert("NAME and ROOM obligatory")
+    }
   }
 
   const changeSelectedOption = (option) =>{
@@ -51,6 +55,16 @@ function App() {
     leaveGroup(name,room)
   }
  
+  const waitingForNextPlayer = ()=>{
+    if(
+      ((infoPlayer.name === moves.players[0].name && moves.players[1].name === "") || 
+      (infoPlayer.name === moves.players[1].name && moves.players[0].name === ""))
+    ){
+      return true
+    }
+    return false
+  }
+
   return (
     <div className="App">
       <Menu getDataUser={getDataUser} leaveGroupHandler={leaveGroupHandler}/>
@@ -78,11 +92,13 @@ function App() {
       }
       <Modal showModal={
         ((infoPlayer.name === moves.players[0].name && moves.waiting===1) || (infoPlayer.name === moves.players[1].name && moves.waiting===2)) ||
-        ((infoPlayer.name === moves.players[0].name && moves.players[1].name === "") || (infoPlayer.name === moves.players[1].name && moves.players[0].name === ""))
+        waitingForNextPlayer()
         
         }>
         <div className="ModalContent">
-          <h2>Waiting rival's move</h2>
+          {
+            waitingForNextPlayer()===true?<h2>Waiting for a rival</h2>:<h2>Waiting rival's move</h2>
+          }
           <Spinner/>
         </div>
       </Modal>
