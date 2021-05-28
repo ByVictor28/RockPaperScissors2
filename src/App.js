@@ -32,8 +32,6 @@ function App() {
     setInfoPlayer(infoPlayer)
     if(infoPlayer.name!=="" && infoPlayer.room!==""){  
       joinRoom(infoPlayer)
-    }else{
-      window.alert("NAME and ROOM obligatory")
     }
   }
 
@@ -72,7 +70,12 @@ function App() {
         // SHOW BOARD WHEN YOU HAVE A NAME 
         infoPlayer.name!== "" &&
         <>
-          <Header score={infoPlayer.name === moves.players[0].name?moves.players[0].score:moves.players[1].score} click={changeNormalGame}/>
+          <Header 
+            score={infoPlayer.name === moves.players[0].name?moves.players[0].score:moves.players[1].score} 
+            click={changeNormalGame}
+            playerOneScore={moves.players[0]}
+            playerTwoScore={moves.players[1]}
+          />
           {
             moves.moves !== 2 ?
               normalGame?
@@ -96,9 +99,11 @@ function App() {
         
         }>
         <div className="ModalContent">
+          <h2>
           {
-            waitingForNextPlayer()===true?<h2>Waiting for a rival</h2>:<h2>Waiting rival's move</h2>
+            waitingForNextPlayer()===true?"Waiting rival, Share room with your friends":"Waiting rival's move"
           }
+          </h2>
           <Spinner/>
         </div>
       </Modal>
