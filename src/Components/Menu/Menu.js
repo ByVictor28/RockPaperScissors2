@@ -7,23 +7,40 @@ const Menu = ({getDataUser,leaveGroupHandler})=>{
     const [canChange, setCanChange] = useState(true);
 
     const aceptData = () =>{
-        getDataUser({name,room})
-        // console.log("object")
-        setCanChange(false);
+        if(room!==""&&name!==""){
+            getDataUser({name,room})
+            // console.log("object")
+            setCanChange(false);
+        }
+        else{
+            window.alert("name and room obligatory")
+        }
     }
     const tryAgain = () =>{
         leaveGroupHandler({name,room})
+        setName("")
+        setRoom("")
+        getDataUser({name:"",room:""})
         // console.log("object")
         setCanChange(true);
     }
+    const getRoomFromServer = () =>{
+        fetch('http://localhost:3000/room')
+        .then(response => response.json())
+        .then(data => {
+            setRoom(data.room)
+            navigator.clipboard.writeText(data.room)
+        })
+
+    }
 return (
     <div className={classes.Menu}>
-        
         <div>    
             <input type="text" placeholder="Name" onChange={(e) => {setName(e.target.value)}} disabled={!canChange} value={name}/>
         </div>
-        <div>    
+        <div className={classes.Room}>    
             <input type="text" placeholder="Room" onChange={(e) => {setRoom(e.target.value)}} disabled={!canChange} value={room}/>
+            <button onClick={canChange===true?getRoomFromServer:null}>Get</button>
         </div>
         {
             canChange?

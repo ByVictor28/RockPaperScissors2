@@ -30,7 +30,9 @@ function App() {
 
   const getDataUser = (infoPlayer) => {
     setInfoPlayer(infoPlayer)
-    joinRoom(infoPlayer)
+    if(infoPlayer.name!=="" && infoPlayer.room!==""){  
+      joinRoom(infoPlayer)
+    }
   }
 
   const changeSelectedOption = (option) =>{
@@ -51,6 +53,16 @@ function App() {
     leaveGroup(name,room)
   }
  
+  const waitingForNextPlayer = ()=>{
+    if(
+      ((infoPlayer.name === moves.players[0].name && moves.players[1].name === "") || 
+      (infoPlayer.name === moves.players[1].name && moves.players[0].name === ""))
+    ){
+      return true
+    }
+    return false
+  }
+
   return (
     <div className="App">
       <Menu getDataUser={getDataUser} leaveGroupHandler={leaveGroupHandler}/>
@@ -58,7 +70,12 @@ function App() {
         // SHOW BOARD WHEN YOU HAVE A NAME 
         infoPlayer.name!== "" &&
         <>
-          <Header score={infoPlayer.name === moves.players[0].name?moves.players[0].score:moves.players[1].score} click={changeNormalGame}/>
+          <Header 
+            score={infoPlayer.name === moves.players[0].name?moves.players[0].score:moves.players[1].score} 
+            click={changeNormalGame}
+            playerOneScore={moves.players[0]}
+            playerTwoScore={moves.players[1]}
+          />
           {
             moves.moves !== 2 ?
               normalGame?
@@ -78,11 +95,15 @@ function App() {
       }
       <Modal showModal={
         ((infoPlayer.name === moves.players[0].name && moves.waiting===1) || (infoPlayer.name === moves.players[1].name && moves.waiting===2)) ||
-        ((infoPlayer.name === moves.players[0].name && moves.players[1].name === "") || (infoPlayer.name === moves.players[1].name && moves.players[0].name === ""))
+        waitingForNextPlayer()
         
         }>
         <div className="ModalContent">
-          <h2>Waiting rival's move</h2>
+          <h2>
+          {
+            waitingForNextPlayer()===true?"Waiting rival, Share room with your friends":"Waiting rival's move"
+          }
+          </h2>
           <Spinner/>
         </div>
       </Modal>

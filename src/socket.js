@@ -49,7 +49,7 @@ const useSocket = () =>{
         })
 
         socketRef.current.on(LEAVE_GROUP_EVENT,(data)=>{
-            // console.log(data)
+            console.log(data)
             setMoves(data)
         })
 

@@ -24,6 +24,18 @@
         font-weight: bold;
         width: 100%;
     }
+    .Room{
+        input{
+            width: 11.2rem;
+        }
+        button{
+            color: $card_back; 
+            padding: .38rem;
+            background: transparent;
+            border: 2px solid $border_box;
+            border-radius: 0.5rem;
+        }
+    }
 }
 
 @include Smartphone{
